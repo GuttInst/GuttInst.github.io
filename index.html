@@ -52,7 +52,7 @@ a:visited {
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>index</title>
+  <title>Coding Style Guide</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -284,7 +284,7 @@ use "../Data/auto.dta"
 <h3 id="a-few-other-notes-on-relative-file-paths">A few other notes on relative file paths</h3>
 <ul>
 <li><p>Always use forward slashes (“/”), not backwards slashes (“\”). This preserves cross-platform compatibility, which is important if you want someone on a Mac (or Linux) computer to be able to run your files.</p></li>
-<li><p>If you need to go up more level, just repeat the two dots, separated by a forward slash. So if you wanted to go up two levels, you would type “../../” at the beginning of your file path.</p></li>
+<li><p>If you need to go up more level, just repeat the two dots, separated by a forward slash. So if you wanted to go up two levels, you would type “../../” at the beginning of your file path. If you are trying to access a file that’s in the same folder as your do-file, no need to include the “../”; just write the file name in quotes.</p></li>
 <li>Sometimes it is necessary to use absolute file paths. In particular, if you need to use data that is not in your project folder (for example, the NSFG datasets, which are housed on the I: Drive), and which would be impractical or duplicative to copy, it is fine to call the dataset using the full file path name:<br />
 
 <pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);">

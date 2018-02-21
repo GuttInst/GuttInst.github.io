@@ -7,4 +7,4 @@
 * TO regenerate html after making changes in the stmd file, run the following
 * code (making sure your directory is set to the folder this file is in)
 
-markstat using simpleScript, strict
+markstat using index, strict
