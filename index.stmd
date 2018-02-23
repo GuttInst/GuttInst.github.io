@@ -37,7 +37,7 @@ There are a few different ways to use this guide:
 
 1.  **Give it to a new staff member**, so they can learn coding practices and norms at Guttmacher. Different institutions have different standards, and newer staff members may have less experience working collaboratively. Distributing this guide at the beginning of a project with new staff can help establish common norms for how code should be formatted and written.  
   
-2.  **Give it to a research assistant**, so that they can go through code you’ve written and modify the formatting to be clearer and more beautiful, following the best practices laid out here. This is particularly relevant for the techniques and standards laid out in Section 4 (Commenting and Readability), which do not require advanced knowledge of Stata.   
+2.  **Give it to a research assistant**, so that they can go through code you’ve written and modify the formatting to be clearer and more beautiful, following the best practices laid out here. This is particularly relevant for the techniques and standards laid out in Section 3 (Commenting and Readability), which do not require advanced knowledge of Stata.   
   
 3.  **Give it to yourself**, as a reference manual for best practices. Ideally, cleaning up code shouldn’t happen at the end of a project. Implementing the practices laid out here as you write your code will save you time and make it harder to introduce errors (and easier to catch them).  
   
