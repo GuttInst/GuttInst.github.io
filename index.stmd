@@ -41,7 +41,7 @@ There are a few different ways to use this guide:
   
 3.  **Give it to yourself**, as a reference manual for best practices. Ideally, cleaning up code shouldn’t happen at the end of a project. Implementing the practices laid out here as you write your code will save you time and make it harder to introduce errors (and easier to catch them).  
   
-For many of the standards and tips laid out in this guide, there are accompanying code snippets demonstrating correct and incorrect techniques <span style="background-color: red">(incorrect techniques are highlighted in red)</span>. Feel free to copy and paste code from these snippets directly into your own do-files.
+For many of the standards and tips laid out in this guide, there are accompanying code snippets demonstrating correct and incorrect techniques <span style="background-color: red">(incorrect techniques are highlighted in red)</span>. Feel free to copy and paste code from these snippets directly into your own do-files. If you want a printable version of the guide, a PDF copy with nicely formatted page breaks can be downloaded [here](https://github.com/GuttInst/GuttInst.github.io/raw/master/PDF%20version/Coding%20Style%20Guide%20PDF.pdf). 
   
 
  <div class="boxBorder">
