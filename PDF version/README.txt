@@ -1,0 +1,1 @@
+Need to add some better documentation about how to print HTML to PDF because it only works in some browsers. 

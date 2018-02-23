@@ -33,7 +33,7 @@ There are a few different ways to use this guide:
 
 1.  **Give it to a new staff member**, so they can learn coding practices and norms at Guttmacher. Different institutions have different standards, and newer staff members may have less experience working collaboratively. Distributing this guide at the beginning of a project with new staff can help establish common norms for how code should be formatted and written.  
   
-2.  **Give it to a research assistant**, so that they can go through code you’ve written and modify the formatting to be clearer and more beautiful, following the best practices laid out here. This is particularly relevant for the techniques and standards laid out in Section 4 (Commenting and Readability), which do not require advanced knowledge of Stata.   
+2.  **Give it to a research assistant**, so that they can go through code you’ve written and modify the formatting to be clearer and more beautiful, following the best practices laid out here. This is particularly relevant for the techniques and standards laid out in Section 3 (Commenting and Readability), which do not require advanced knowledge of Stata.   
   
 3.  **Give it to yourself**, as a reference manual for best practices. Ideally, cleaning up code shouldn’t happen at the end of a project. Implementing the practices laid out here as you write your code will save you time and make it harder to introduce errors (and easier to catch them).  
   
@@ -275,7 +275,7 @@ This approach has several key advantages:
 
 * Always use forward slashes ("/"), not backwards slashes ("\\"). This preserves cross-platform compatibility, which is important if you want someone on a Mac (or Linux) computer to be able to run your files.  
 
-* If you need to go up more level, just repeat the two dots, separated by a forward slash. So if you wanted to go up two levels, you would type “../../” at the beginning of your file path.   
+* If you need to go up more level, just repeat the two dots, separated by a forward slash. So if you wanted to go up two levels, you would type “../../” at the beginning of your file path. If you are trying to access a file that's in the same folder as your do-file, no need to include the "../"; just write the file name in quotes.   
    
 * Sometimes it is necessary to use absolute file paths. In particular, if you need to use data that is not in your project folder (for example, the NSFG datasets, which are housed on the I: Drive), and which would be impractical or duplicative to copy, it is fine to call the dataset using the full file path name:  
 <pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 640px, black 640px, black 641px, #fafafa 641px, #fafafa 100%);">
@@ -286,7 +286,7 @@ It is less likely that these file paths will break, as the I: drive structure do
 
 * Using relative file paths requires thinking about and setting up your general project folder structure, at least for your Data, Program and Output folders, before you start coding. Look to the archiving guidelines for some suggested folder structures for different types of projects. Setting up your folders this way will also help you later on down the road with project archiving. 
   
-<br /> <br />  
+<br />  
 <br /> <br />
 <br /> <br />
 <br /> <br />
