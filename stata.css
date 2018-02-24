@@ -5,8 +5,9 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 */
 
 .hljs {
-  display: block;
-  overflow-x: hidden;
+  /*display: block;*/
+  /*overflow-x: hidden;*/
+  width: 100%;
 }
 
 
