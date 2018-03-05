@@ -2,8 +2,8 @@
 urlcolor: blue
 ---
 <!-- This is the link to the javascript library that does the Stata syntax highlighting (it also sets the stata-like background in the code snippets). Path needs to change if location of file moves -->
-<link rel="stylesheet" href="GuttInst.github.io/stata.css">
-<script src="GuttInst.github.io/highlight.pack.js"></script>
+<link rel="stylesheet" href="stata.css">
+<script src="highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 ![](Logo.png){.img-responsive .center-block}

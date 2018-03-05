@@ -10,8 +10,6 @@
     width: 110%;
   }
 }
-
-
 body{padding:14px 28px; width:800px;}
 body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 16px;}
 h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
@@ -39,6 +37,7 @@ font {width: 100%;}
 h1.title {text-align:center; margin-bottom:0; color: black; font-size: 40px; border-bottom: 3px solid black; }
 p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
 p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+
 /* Tables*/
 table { margin:auto; border-collapse:collapse; }
 table caption { margin-bottom:1ex;}
@@ -62,7 +61,7 @@ a:visited {
 </style>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Coding Style Guide</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -75,7 +74,7 @@ a:visited {
   <![endif]-->
 </head>
 <body>
-  <div id="entire-container">
+<div id="entire-container">
 <!-- This is the link to the javascript library that does the Stata syntax highlighting (it also sets the stata-like background in the code snippets). Path needs to change if location of file moves -->
 <link rel="stylesheet" href="stata.css">
 <script src="highlight.pack.js"></script>
@@ -114,7 +113,7 @@ a:visited {
 <p>Distinct aspects of an analysis should be broken up into smaller ‘chunked’ do-files, all of which are run in order by a larger “Master” do-file. Ideally, the Master do-file should be heavily commented, and should act as documentation of the broad steps of your analysis. One way to think about this is to treat the Master do-file as a draft of your eventual methodology section: reading it should be sufficient for a reader to be able to gain an overall understanding of the study methodology, and when drafting the methodology section of a paper, you should be able to use it as a reference to remember what decisions you made.</p>
 <p>At its most basic, however, the Master do-file should document which programs should be run, and in what order, to be able to reproduce your entire analysis. It also serves as an easy way to run, or re-run, your full program, from recoding the raw data to producing the final tables.</p>
 <p>A very simple Master do-file (without a file header, which is discussed later in this section), might look something like this:</p>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 /////////////////////////////////////////////////////////
 /// SECTION 1: Data Management //////////////////////////
 /////////////////////////////////////////////////////////
@@ -210,7 +209,7 @@ a:visited {
 </ul>
 <h3 id="file-header-for-master-do-file">File Header for Master Do-file</h3>
 <p>Every do-file in your analysis should have a <em>file header</em>, to orient the reader with a few key pieces of information as well as set up the system environment. The file header should have the program name, the project code, a short description of what the program does (along with any important notes), the date it was created, and the person or people who created it. A typical file header might look like this:</p>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * Program name: Example of Master Do-File
 * Project(s): 488  
 * Program task:  
@@ -254,7 +253,7 @@ set maxvar 10000
 <li><p>Set the version of Stata that you are using. New versions of Stata may contain updates that alter your results. For example, the <a href="https://www.stata.com/manuals13/rsetseed.pdf"><em>seed</em></a> for random sampling changed between Stata versions 13 and 14. Any do-file that used the older version of Stata to sample would no longer be reproducible.</p></li>
 <li>A statement installing any user-written programs you use in your analysis (and describing what they do). One of the wonderful things about Stata is that you can install user-written packages that can extend or modify what it can do (or write your own!). In general, these should be used with care, as they are more likely to have unexpected bugs, and because they are a “black box,” they can make it harder for someone to understand what you did. If you do use them, however, make sure to include a statement at the top of your file that explains what they do, checks if they are installed, and if they are not, installs them automatically:<br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 ** Check if -estpost- is installed -- if not, install it. 
 /* -estpost- is a user written command that makes it much
 easier to store results from certain commands. */
@@ -265,7 +264,7 @@ if  _rc==111 ssc install estout.pkg                        // if it doesn't, ins
 <h2 id="setting-directories-and-relative-file-paths">Setting directories and relative file-paths</h2>
 You may have noticed one thing that the file header shown above is missing: a cd statement, changing the ‘home’ directory of the program using an absolute file path – something like this:<br />
 
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);"><code class="stata">
 * Set home directory
 cd "K:/Divisions/Research/Policies and procedures/Reproducibility and transparency" 
 </code></pre>
@@ -275,14 +274,14 @@ cd "K:/Divisions/Research/Policies and procedures/Reproducibility and transparen
 <img src="Folder%20Structure.png" class="img-responsive center-block" /></p>
 <strong>Incorrect way to call data:</strong><br />
 
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);">
 
 <font color=#008000>* Load auto dataset</font>
-<font color=#00008A>use</font> <font color=#800000>"I:/Policies and procedures/Data policy/Reproducibility and transparency/In <br>Progress/ExampleCode/Example file structure/Data/auto.dta"</font> 
+<font color=#00008A>use</font> <font color=#800000>"I:/Policies and procedures/Data policy/Reproducibility and transparency/In Progress/ExampleCode/Example file structure/Data/auto.dta"</font> 
 </pre>
 <strong>Correct way to call data:</strong><br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * Load auto dataset
 use "../Data/auto.dta"
 </code></pre>
@@ -299,9 +298,9 @@ use "../Data/auto.dta"
 <li><p>If you need to go up more level, just repeat the two dots, separated by a forward slash. So if you wanted to go up two levels, you would type “../../” at the beginning of your file path. If you are trying to access a file that’s in the same folder as your do-file, no need to include the “../”; just write the file name in quotes.</p></li>
 <li>Sometimes it is necessary to use absolute file paths. In particular, if you need to use data that is not in your project folder (for example, the NSFG datasets, which are housed on the I: Drive), and which would be impractical or duplicative to copy, it is fine to call the dataset using the full file path name:<br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);">
 <font color=#008000>* Load NSFG dataset</font>
-<font color=#00008A>use</font> <font color=#800000>"I:/Datasets/External/NSFG/2011-2013/Data/Female/<br>Final/NSFG 2011-2013 female - Guttmacher final.dta"</font> 
+<font color=#00008A>use</font> <font color=#800000>"I:/Datasets/External/NSFG/2011-2013/Data/Female/Final/NSFG 2011-2013 female - Guttmacher final.dta"</font> 
 </pre>
 <p>It is less likely that these file paths will break, as the I: drive structure does not get reorganized frequently, and it would be fairly simple to fix these few file paths in the occasion that it does.</p></li>
 <li><p>Using relative file paths requires thinking about and setting up your general project folder structure, at least for your Data, Program and Output folders, before you start coding. Look to the archiving guidelines for some suggested folder structures for different types of projects. Setting up your folders this way will also help you later on down the road with project archiving.</p></li>
@@ -309,7 +308,7 @@ use "../Data/auto.dta"
 <p><br /> <br /></p>
 <h1 id="section2">SECTION 2: HARD CODING VS. MACROS</h1>
 <p>Hard coding is the practice of using literal values in code instead of variables. Hard coding should be avoided whenever possible. Take the following code, which calculates the mean and standard deviation of a variable, and then uses those calculated values to standardize.</p>
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);"><code class="stata">
 * Calculate mean and standard deviation of weight
 summ weight
 * The mean was 3019.459, SD was 777.1936 
@@ -318,7 +317,7 @@ summ weight
 gen weightstd = (weight-3019.459)/777.1936
 </code></pre>
 <p>The problem with coding in this way is that if the values of the mean and standard deviation change (because you drop values, or use a newer dataset), the code will now be incorrect, and all of these values will have to change (and if you forget, it will introduce an error). It is much preferable to use Stata’s own stored results - in this case, stored in <em>r(mean)</em> and <em>r(sd)</em> - to carry out the same calculation:</p>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * Calculate mean and standard deviation of weight
 summ weight
 
@@ -327,7 +326,7 @@ gen weightstd = (weight-r(mean))/r(sd)
 </code></pre>
 <p>Now the mean and the standard deviation adapt automatically, without a need to change the code (and with less potential for errors). It also becomes easier to use in other programs directly.</p>
 <p>There are almost always ways to avoid hard coding numbers into your code. If it is unavoidable, however, it is best to define it in a <a href="http://data.princeton.edu/stata/programming.html"><em>local</em></a> at the beginning of the file (with a large and distinct call out to the hard coding in a comment), and then refer to this local later on.</p>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * Total number of cars in the US
 * Source: IHS Automotive
 * HARD CODED: MUST BE CHANGED MANUALLY
@@ -347,7 +346,7 @@ gen totalweight = r(mean) * `carpop'
 <li><p>Stata has a set of <a href="https://www.stata.com/help.cgi?extended_fcn"><em>extended macro functions</em></a>, which can be helpful for extracting other aspects of variables (such as value labels, or longer variable names) and then using them elsewhere in your file. Find out more about these by typing “<em>help extended_fcn</em>”.</p></li>
 <li><em>Locals</em> are “local” to the do-file that created them. This means that after the do-file runs, they disappear: there is no way to access their contents. If you ever need to see the contents of a local, just include a <em>display</em> statement in your code that prints the contents to the results screen:<br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">  
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">  
 * Display contents of local carpop 
 display "`carpop'"
 </code></pre></li>
@@ -372,7 +371,7 @@ display "`carpop'"
 <p>(In some cases, it might also be useful to write a comment about the <em>expected result</em> of a piece of code. If you merge two files, and you know that one case should be unmatched by design, then it might be useful to write a comment to that effect. Or if you write code to list cases with ‘suspicious’ values, it is often useful to write a comment with the number of cases you found, and what you decided to do with them.)</p>
 <p>In addition, each do-file should have a <em>file header</em> to orient the reader with a few key pieces of information, as well as set up the system environment. The file header should have the program name, the project code, a short description of what the program does (along with any important notes), the date it was created, the date it was last modified, and the person who created it or modified it last (the last two items are not necessary for projects using version control, as they are tracked automatically). If the code was adapted from a previous or similar project, this should be noted as well.</p>
 <p><strong>Example of a file header:</strong></p>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">  
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">  
 * Program name: Import 2013 Teen Data by Race (from DOH)
 * Project(s): 435
 * Program task:  
@@ -403,7 +402,7 @@ set linesize 90
 set maxvar 10000
 </code></pre>
 <strong>Example of a section header</strong>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata"> 
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata"> 
 //////////////////////////////////////////////////////////
 ///////////////////1. Basic Recodes///////////////////////
 /* 
@@ -421,14 +420,14 @@ set maxvar 10000
 /////////////////////////////////////////////////////////
 </code></pre>
 <strong>Example of <em>one-line comment</em>:</strong>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata"> 
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata"> 
 * Create dichotomous indicator: was mother HS graduate?
 recode educmom (1 = 0 "Less than HS")                      ///
                (2 3 4 = 1 "HS or more"), gen(momhs)
 </code></pre>
 <strong>Example of <em>in-line comments</em>:</strong><br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata"> 
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata"> 
 * Recode pregnancy intention into three categories:
 * 1) Intended (then or sooner), 2) Mistimed (later),
 * 3) Unwanted (did not want to get pregnant at that time 
@@ -450,12 +449,12 @@ label values wanresp wantresp
 <li><p>Include verbs in your comments (e.g., “Create dichotomous indicators…” instead of just “Dichotomous indicators…”)</p></li>
 <li>Leave one space between the * or // or /* and your comment’s first character.<br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata"> 
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata"> 
 * Compute average test score for each student
 egen average = mean(score), by(studentid)
 </code></pre></li>
 <li>If a single-line comment needs to be long enough to extend beyond the screen/page width, turn it into a block comment using /* and */.
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata"> 
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata"> 
 /*
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed sodales facilisis varius. Nulla auctor lacus nibh, 
@@ -470,31 +469,31 @@ condimentum ante. Duis eu fringilla turpis.
 </code></pre></li>
 <li>Similarly, if a single line of code (command) is long enough to extend beyond the screen/page, break the code into multiple lines and use the triple-slash syntax (///) at the end of each line. Always indent the continuing lines of code.<br />
 <strong>Correct:</strong>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata"> 
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata"> 
 collapse (mean) income   numdep  biokids numpregs nummisc  ///
                 numabort numpart score1  totmeth  wantresp ///
                 , by(year)
 </code></pre>
 <strong>Incorrect:</strong>
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);">
 <font color=#00008A>collapse</font> (<font color=#00008A>mean</font>) income numdep biokids numpregs nummisc numabort numpart score1 totmeth wantresp, by(year)
 </pre>
 <strong>Also incorrect</strong>
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);"><code class="stata"> 
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);"><code class="stata"> 
 collapse (mean) income numdep biokids numpregs nummisc     ///
 numabort numpart score totmeth wantresp, by(year)
 </code></pre></li>
 <li><p>Alternatively, if you expect to have a series of commands that extend beyond the screen/page, change the end-of-line delimiter from a carriage return to a semicolon. When you have finished the series, return the end-of-line delimiter to the default carriage return.</p></li>
 <li>Multiple commands that follow the same structure should align (within reason).<br />
 <strong>Correct:</strong>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 gen     time19 = vry1stag if vry1stag <= 19                                  
 replace time19 = 19       if vry1stag >  19 & vry1stag < .                     
 replace time19 = ager     if vry1stag >= .  & ager <= 19                         
 replace time19 = 19       if vry1stag >= .  & ager >  19 
 </code></pre>
 <strong>Incorrect:</strong>
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);"><code class="stata">
 gen time19 = vry1stag if vry1stag <= 19                                  
 replace time19 = 19 if vry1stag > 19 & vry1stag < .                     
 replace time19 = ager if vry1stag >= .  & ager <= 19                         
@@ -502,18 +501,18 @@ replace time19 = 19 if vry1stag >= .  & ager >  19
 </code></pre></li>
 <li>Mathematical or logical operators (=, &lt;, !=, etc.) should be preceded and followed by a single space.<br />
 <strong>Correct:</strong>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 gen time19 = vry1stag if vry1stag <= 19  
 </code></pre>
 <strong>Incorrect:</strong>
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);"><code class="stata">
 gen time19=vry1stag if vry1stag<=19
 </code></pre></li>
 <li><p>Comments can also be used to record tasks that still need to be carried out, or to communicate between multiple people working on a project. So that these comments stand our and are easily searchable, they should start with a label in all caps (such as “TO DO:”, “CHECK:”) or your name and the name of the person you are communicating with (e.g.“IMZ to LL”).</p></li>
 </ul>
 <strong>Example of comment to a collaborator:</strong><br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * Create dichotomous indicator of >3 year age 
 * difference with first partner 
 gen agediscrep = .
@@ -523,7 +522,7 @@ replace agediscrep = 1 if agediff >  3 & agediff < .
 </code></pre>
 <strong>Example of TO DO:</strong><br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * Create a dichotomous variable for had sex at 16 years 
 * or younger
 * Note: We purposely do not drop cases below 10 (as we 
@@ -542,7 +541,7 @@ replace earlysex = 0 if hadsex   == 0
 <p>Loops — using the <a href="https://www.stata.com/manuals13/pforeach.pdf">foreach</a> or <a href="https://www.stata.com/manuals13/pforvalues.pdf">forvalues</a> commands — are a way to do a series of repetitive or linked commands in Stata in a relatively concise way. Loops are useful not only because they save typing, but also because they can prevent errors.</p>
 <p>If you have a series of repetitive lines of code, it can be easy to make a typo in one of them (and it can be hard to spot):</p>
 <strong><font color=red>Can you find the error in this code?</font></strong>
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);"><code class="stata">
 * For each biological child of male respondent, recode 
 * as unmarried at birth if mother of child is not 
 * coded as former or current wife
@@ -558,7 +557,7 @@ replace biomar9=0 if parent09!=1 & parent09!=3
 </code></pre>
 <p><em>Hint: look at the 6th and 7th lines of code</em></p>
 <strong>A better way:</strong>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * For each biological child of male respondent, 
 * recode as unmarried at birth if mother of 
 * child is not coded as former or current wife.
@@ -571,7 +570,7 @@ foreach mynum of numlist 1/9 {                             //  (max num of child
 </code></pre>
 <p>Now there is only one line of code to check, as opposed to 8 – and if that line is right, so are all of the others.</p>
 To make your loops more useful, it can also be helpful to use conditional logic statements such as if and else. These evaluate a condition, and if it is true, execute a particular piece of code. The code below, for example, checks to see if each variable in a set of variables is numeric; if it is, it executes a recode, and calculates a mean for each gender, if it’s not, it assumes it is a string variable, and tabulates it.
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * Descriptive statistics
 local myvars numbirth ager sitename
 foreach myvar of varlist `myvars' {
@@ -606,7 +605,7 @@ foreach myvar of varlist `myvars' {
 <p>As you can see, however, <em>if</em> and <em>else</em> statements can also make code harder to read, especially as they get more complicated. There isn’t a hard and fast rule about when they are appropriate or not – as a programmer, you need to carefully balance the ability to make your code more flexible and concise with its readability.</p>
 <p><strong>It is also important to note that if conditions do not select individual cases!</strong></p>
 <strong><font color=red>Incorrect:</font></strong>
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);"><code class="stata">
 if year == 1960 {
   
   replace coolvar = 1
@@ -626,7 +625,7 @@ else {
 </ul>
 <strong>Correct:</strong><br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 foreach myvar of varlist `myvars' {
 
    recode `myvar' (5=0)
@@ -634,7 +633,7 @@ foreach myvar of varlist `myvars' {
 } // End of myvar loop
 </code></pre>
 <strong><font color=red>Incorrect (in multiple ways):</font></strong>
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);"><code class="stata">
 foreach myvar of varlist `myvars' 
 {
 recode `myvar' (5=0) }
@@ -644,7 +643,7 @@ recode `myvar' (5=0) }
 </ul>
 <strong>Correct:</strong><br />
 
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 foreach myvar of varlist `myvars' {
 
     recode `myvar' (5=0)
@@ -658,7 +657,7 @@ foreach myvar of varlist `myvars' {
 } // End of myvar loop
 </code></pre>
 <strong><font color=red>Incorrect:</font></strong>
-<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 800px, black 800px, black 801px, #FBB 801px, #FBB 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #FBB 0px, #FBB 500px, black 500px, black 501px, #FBB 501px, #FBB 100%);"><code class="stata">
 foreach myvar of varlist `myvars' {
 recode `myvar' (5=0)
 foreach mygender of numlist  1/2 {
@@ -670,7 +669,7 @@ mean `myvar' if gender==`mygender'
 <li><p>Also indent after a piece of conditional logic (“if” or “else”).</p></li>
 <li><p>Comment the end of a large block of nested conditional logic – such as a loop or if statement.</p></li>
 </ul>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * Descriptive statistics
 local myvars numbirth ager sitename
 foreach myvar of varlist `myvars' {
@@ -705,7 +704,7 @@ foreach myvar of varlist `myvars' {
 <ul>
 <li>Add display statements within your loop, especially as they get more complicated. One of the drawbacks of loops is that it can be hard to tell which iteration of the loop your code is on; adding display statements makes output more readable, and makes it easier to tell if your loop is working correctly (and makes it easier to debug). The output from the code above is much more readable if we write it this way:</li>
 </ul>
-<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 800px, black 800px, black 801px, #fafafa 801px, #fafafa 100%);"><code class="stata">
+<pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
 * Descriptive statistics
 local myvars numbirth ager sitename
 foreach myvar of varlist `myvars' {
