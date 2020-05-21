@@ -1,2 +1,1 @@
-# GuttInst.github.io
-Coding Style Guide
+See GuttInst.github.io for Coding Style Guide
