@@ -314,7 +314,7 @@ summ weight
 * The mean was 3019.459, SD was 777.1936 
 
 * Standardize weight variable
-gen weightstd = (weight-3019.459)/777.1936
+gen weightstd = (weight - 3019.459) / 777.1936
 </code></pre>
 <p>The problem with coding in this way is that if the values of the mean and standard deviation change (because you drop values, or use a newer dataset), the code will now be incorrect, and all of these values will have to change (and if you forget, it will introduce an error). It is much preferable to use Stata’s own stored results - in this case, stored in <em>r(mean)</em> and <em>r(sd)</em> - to carry out the same calculation:</p>
 <pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
@@ -322,7 +322,7 @@ gen weightstd = (weight-3019.459)/777.1936
 summ weight
 
 * Use stored results to standardize weight variable
-gen weightstd = (weight-r(mean))/r(sd)
+gen weightstd = (weight - r(mean)) / r(sd)
 </code></pre>
 <p>Now the mean and the standard deviation adapt automatically, without a need to change the code (and with less potential for errors). It also becomes easier to use in other programs directly.</p>
 <p>There are almost always ways to avoid hard coding numbers into your code. If it is unavoidable, however, it is best to define it in a <a href="http://data.princeton.edu/stata/programming.html"><em>local</em></a> at the beginning of the file (with a large and distinct call out to the hard coding in a comment), and then refer to this local later on.</p>
@@ -366,7 +366,7 @@ display "`carpop'"
 <ol type="1">
 <li><strong>What does this code block do?</strong><br />
 </li>
-<li><strong>Why did I implement this block this particular way?</strong></li>
+<li><strong>Why did I implement this code block this particular way?</strong></li>
 </ol>
 <p>(In some cases, it might also be useful to write a comment about the <em>expected result</em> of a piece of code. If you merge two files, and you know that one case should be unmatched by design, then it might be useful to write a comment to that effect. Or if you write code to list cases with ‘suspicious’ values, it is often useful to write a comment with the number of cases you found, and what you decided to do with them.)</p>
 <p>In addition, each do-file should have a <em>file header</em> to orient the reader with a few key pieces of information, as well as set up the system environment. The file header should have the program name, the project code, a short description of what the program does (along with any important notes), the date it was created, the date it was last modified, and the person who created it or modified it last (the last two items are not necessary for projects using version control, as they are tracked automatically). If the code was adapted from a previous or similar project, this should be noted as well.</p>
@@ -445,7 +445,6 @@ label values wanresp wantresp
 </code></pre>
 <h3 id="other-guidelines">Other guidelines:</h3>
 <ul>
-<li><p>Keep comments as succinct as possible (e.g., one line) while not losing meaning.</p></li>
 <li><p>Include verbs in your comments (e.g., “Create dichotomous indicators…” instead of just “Dichotomous indicators…”)</p></li>
 <li>Leave one space between the * or // or /* and your comment’s first character.<br />
 
@@ -453,7 +452,7 @@ label values wanresp wantresp
 * Compute average test score for each student
 egen average = mean(score), by(studentid)
 </code></pre></li>
-<li>If a single-line comment needs to be long enough to extend beyond the screen/page width, turn it into a block comment using /* and */.
+<li>If a comment extends beyond the page guide (the vertical line in the do-file editor, set by default at column 80), turn it into a block comment using /* and */.
 <pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata"> 
 /*
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -467,7 +466,7 @@ nisl dictum elit, ac pulvinar orci massa vel lorem. In et
 condimentum ante. Duis eu fringilla turpis.
 */
 </code></pre></li>
-<li>Similarly, if a single line of code (command) is long enough to extend beyond the screen/page, break the code into multiple lines and use the triple-slash syntax (///) at the end of each line. Always indent the continuing lines of code.<br />
+<li>Similarly, if a line of code extends past the page guide, break the code into multiple lines and use the triple-slash syntax (///) at the end of each line. Always indent the continuing lines of code.<br />
 <strong>Correct:</strong>
 <pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata"> 
 collapse (mean) income   numdep  biokids numpregs nummisc  ///
@@ -483,7 +482,7 @@ collapse (mean) income   numdep  biokids numpregs nummisc  ///
 collapse (mean) income numdep biokids numpregs nummisc     ///
 numabort numpart score totmeth wantresp, by(year)
 </code></pre></li>
-<li><p>Alternatively, if you expect to have a series of commands that extend beyond the screen/page, change the end-of-line delimiter from a carriage return to a semicolon. When you have finished the series, return the end-of-line delimiter to the default carriage return.</p></li>
+<li><p> If you need to write an extremely long command that would require many line returns (defining a local that's a long list, for example), you can also temporarily change the end-of-line delimiter from a carriage return to a semicolon. In general, however, this should be avoided, as it can lead to some odd behavior when used in conjunction with inline comments.</p></li>
 <li>Multiple commands that follow the same structure should align (within reason).<br />
 <strong>Correct:</strong>
 <pre style="background-image: linear-gradient(90deg, #fafafa 0px, #fafafa 500px, black 500px, black 501px, #fafafa 501px, #fafafa 100%);"><code class="stata">
@@ -743,7 +742,7 @@ foreach myvar of varlist `myvars' {
 <p><br /> <br /></p>
 <h1 id="section5">SECTION 5: VARIABLE NAMES AND LABELS</h1>
 <p>Good variable naming is fundamental to the readability and robustness of your code. At its most basic, code isn’t readable if variable names aren’t, and overly abbreviated or oblique variable names can often be harder to interpret than badly commented code. There are a variety of different naming philosophies for variables, each of which make sense in different contexts. Stata itself gives few limitations. Variables can be up to 32 characters, and contain any mix of numbers, letters and underscores. No special characters or spaces are permitted, and variable names cannot start with a number or underscore; in addition, a few shorter words (such as <em>in</em> and <em>if</em>) are reserved for Stata syntax itself.</p>
-<p>Just because you have this flexibility, however, doesn’t mean that you should use it. Even if it is possible to create a variable called gH___JH648_jN, it fails at its most fundamental task: for other people to be able to interpret it easily, for you to remember what it signifies, and (though this last one is less important) for it not to be a pain to type out in your code. Variable names should be intuitive enough for others to interpret the meaning and content at first glance. In general, do not shy away from longer descriptive names with multiple words as opposed to shorter abbreviated names that may not convey the proper meaning. That said, the ideal length of a variable name is much less than 32 characters; good variable naming is a careful balance between brevity and meaning.</p>
+<p>Just because you have this flexibility, however, doesn’t mean that you should use it. Even if it is possible to create a variable called gH___JH648_jN, it fails at its most fundamental task: for other people to be able to interpret it easily, for you to remember what it signifies, and (though this last one is less important) for it not to be a pain to type out in your code. Variable names should be intuitive enough for others to interpret the meaning and content at first glance. If necessary, it's preferable to use longer descriptive names with multiple words as opposed to shorter names using abbreviations that may not be obvious to people less familiar with the data. That said, the ideal length of a variable name is much less than 32 characters; good variable naming is a careful balance between brevity and meaning.</p>
 <p>The most important principle of variable naming is to be <strong>consistent</strong>. It is fine to use capitalization (remember that Stata is caps sensitive) or not, or use different formats for different types of variables, as long as it is consistent throughout your code, and clearly communicated to the people that you are working with. If you are using an unusual naming convention, or one that requires explanation, it may also be worth describing in either the Master do-file header or the file header of the relevant do-file. This section is not as prescriptive as the ones that preceded it, as general rules of variable naming are likely too rigid for the many different types of projects and analyses at the institute. There are some specific guidelines however, that all projects should ideally follow – either because of peculiarities of the Stata system itself, or because of established community norms.</p>
 <h3 id="specific-guidelines">Specific guidelines</h3>
 <ul>
