@@ -81,7 +81,7 @@ A very simple Master do-file (without a file header, which is discussed later in
   two-year weights),and saves out a full appended dataset 
   called "NSFG female 2006-15.dta"
   */
-  run "1. Append 2006-10 and 2011-15 NSFG.do"
+  run "1 Append 2006-10 and 2011-15 NSFG.do"
   //////////////////////////////////
 
   ////////////////////////////////////////////////
@@ -114,7 +114,7 @@ A very simple Master do-file (without a file header, which is discussed later in
   It then saves out the recoded file as 
   "NSFG female 2006-15 recoded.dta"
   */
-  run "2. Recodes of demographic and outcome measures.do"
+  run "2 Recodes of demographic and outcome measures.do"
   ////////////////////////////////////////////////
   
 /////////////////////////////////////////////////////////
@@ -132,7 +132,7 @@ A very simple Master do-file (without a file header, which is discussed later in
   It then formats the results, and exports 
   them to Excel. 
     */
-  do "3. Run descriptive tables and export Table 1.do"
+  do "3 Run descriptive tables and export Table 1.do"
   //////////////////////////////////
   
   ///////////////////////////////////
@@ -146,7 +146,7 @@ A very simple Master do-file (without a file header, which is discussed later in
   (which correspond to Table 2 and Figure 2) for export.  
   It then exports them to Excel. 
     */
-  do "4. Run complicated analysis and export Table 2 and Figure 2.do"
+  do "4 Run complicated analysis and export Table 2 and Figure 2.do"
   //////////////////////////////////
 </code></pre>
 
